@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Terjun Tumpak Sewu - Niagara of Indonesia</title>
+    <meta name="description" content="Jelajahi keindahan Air Terjun Tumpak Sewu di Lumajang, Jawa Timur. Wisata alam epik dengan pemandangan memukau.">
+    
+    <!-- Mengambil Font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABEL CSS & RESET --- */
+        :root {
+            --primary-color: #00695c; /* Hijau Teal Alam */
+            --primary-dark: #004d40;
+            --accent-color: #ffca28; /* Kuning Keemasan */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --max-width: 1200px;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- KOMPONEN UTILITAS --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* --- HEADER & NAVIGASI --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            /* BACKGROUND: Masih menggunakan gradasi warna hijau solid */
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px; /* Offset fixed header */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+            animation: fadeIn Up 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* --- TENTANG SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* --- HIGHLIGHTS / FITUR --- */
+        .features {
+            background-color: var(--bg-white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background-color: #e0f2f1;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- GALERI --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            height: 250px;
+            cursor: pointer;
+            background-color: #ddd; /* Placeholder warna jika gambar belum ada */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* --- INFO WISATAWAN (PRICING & TIPS) --- */
+        .info-section {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .info-section .section-title h2 {
+            color: white;
+        }
+        
+        .info-section .section-title p {
+            color: #ccc;
+        }
+
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 1rem;
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .info-list {
+            margin-top: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-list li span:first-child {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- LOKASI & FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none; /* Sederhana: sembunyikan menu di mobile untuk layout statis */
+            }
+            
+            /* Menu mobile sederhana (tanpa JS) */
+            nav {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <!-- Icon SVG Waterfall -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12h20"></path>
+                        <path d="M12 2v20"></path>
+                        <path d="M4.93 4.93l14.14 14.14"></path>
+                        <path d="M19.07 4.93L4.93 19.07"></path>
+                    </svg>
+                    Tumpak Sewu
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Beranda</a>
+                    <a href="#about">Tentang</a>
+                    <a href="#features">Keunggulan</a>
+                    <a href="#gallery">Galeri</a>
+                    <a href="#info">Info Wisata</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Niagara dari Indonesia</h1>
+            <p>Saksikan keajaiban Air Terjun Tumpak Sewu. Salah satu air terjun terindah di dunia dengan bentuk amphitheater alam yang memukau di Lumajang, Jawa Timur.</p>
+            <div class="hero-buttons">
+                <a href="#info" class="btn btn-primary">Jelajahi Sekarang</a>
+                <a href="#gallery" class="btn btn-outline">Lihat Galeri</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Tumpak Sewu</h2>
+                <p>Keindahan alam yang tersembunyi di kaki Gunung Semeru.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-img">
+                    <!-- GAMBAR LOKAL 1: Ganti dengan file Anda di folder images/ -->
+                    <img src="img/Tumpak Sewu.jpg" alt="images">
+                </div>
+                <div class="about-text">
+                    <h3>Surga Tersembunyi di Lumajang</h3>
+                    <p>
+                        Air Terjun Tumpak Sewu, atau yang sering disebut Coban Sewu, memiliki ketinggian sekitar 120 meter. Bentuknya yang unik menyerupai tirai (curtain) air yang mengalir melingkar menjadikannya fenomena alam yang langka.
+                    </p>
+                    <p>
+                        Nama "Tumpak Sewu" dalam bahasa Jawa berarti "Tempat air yang tumpah" atau "Separa", yang menggambarkan debit airnya yang sangat besar dan membanjiri lembah di bawahnya. Lokasi ini berada di perbatasan antara Kabupaten Lumajang dan Kabupaten Malang, menjadikannya gerbang utama menuju Taman Nasional Bromo Tengger Semeru.
+                    </p>
+                    <a href="#features" style="color: var(--primary-color); font-weight: 600;">Pelajari Lebih Lanjut &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features/Highlights Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keunggulan Wisata</h2>
+                <p>Kenapa Anda harus mengunjungi Tumpak Sewu?</p>
+            </div>
+            <div class="feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <!-- SVG Eye -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Pemandangan Puncak</h3>
+                    <p>Nikmati pemandangan panorama air terjun dari atas tebing (area homestay) tanpa perlu turun menuruni jurang. Cocok untuk semua usia.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <!-- SVG Hiking -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Petualangan Trekking</h3>
+                    <p>Bagi para adrenaline junkies, menuruni lembah menuju pusat air terjun memberikan sensasi petualangan yang tak terlupakan.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="icon-box">
+                        <!-- SVG Camera -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Spot Foto Instagramable</h3>
+                    <p>Setiap sudut, mulai dari Goa Tetes hingga kolam renang alam di bawah air terjun, menawarkan latar belakang foto yang spektakuler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Foto</h2>
+                <p>Intip sedikit keindahan yang menanti Anda di sana.</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- GAMBAR GALERI 1 -->
+                <div class="gallery-item">
+                    <img src="img/Air Terjun Tumpak Sewu.jpg" alt="Tumpak Sewu Panorama">
+                    <div class="gallery-overlay">
+                        <h4>Panorama Atas</h4>
+                    </div>
+                </div>
+                <!-- GAMBAR GALERI 2 -->
+                <div class="gallery-item">
+                    <img src="img/Tumpak Sewu Waterfall · Lumajang Regency, East Java.jpg" alt="Tumpak Sewu Debit Air">
+                    <div class="gallery-overlay">
+                        <h4>Debut Air</h4>
+                    </div>
+                </div>
+                <!-- GAMBAR GALERI 3 -->
+                <div class="gallery-item">
+                    <img src="img/Tumpak Sewu Waterfall in Java ✨.jpg" alt="Goa Tetes">
+                    <div class="gallery-overlay">
+                        <h4>Goa Tetes</h4>
+                    </div>
+                </div>
+                <!-- GAMBAR GALERI 4 -->
+                <div class="gallery-item">
+                    <img src="img/Chute Tumpak Sewu, sur l'île de Java.jpg" alt="Jalur Trekking">
+                    <div class="gallery-overlay">
+                        <h4>Jalur Trekking</h4>
+                    </div>
+                </div>
+                <!-- GAMBAR GALERI 5 -->
+                <div class="gallery-item">
+                    <img src="img/Tumpak Sewu Waterfall.jpg" alt="Hutan Sekitar">
+                    <div class="gallery-overlay">
+                        <h4>Kehidupan Hutan</h4>
+                    </div>
+                </div>
+                <!-- GAMBAR GALERI 6 -->
+                <div class="gallery-item">
+                    <img src="img/Tumpak Sewu waterfall (1).jpg" alt="Pelangi Tumpak Sewu">
+                    <div class="gallery-overlay">
+                        <h4>Pelangi Senja</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Pricing Section -->
+    <section id="info" class="info-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Informasi Wisata</h2>
+                <p>Persiapkan perjalanan Anda dengan data berikut.</p>
+            </div>
+            <div class="info-container">
+                <!-- Harga Tiket -->
+                <div class="info-card">
+                    <h3>Harga Tiket Masuk</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">*Harga dapat berubah sewaktu-waktu.</p>
+                    <ul class="info-list">
+                        <li>
+                            <span>Tiket Masuk Utama</span>
+                            <span>Rp 10.000</span>
+                        </li>
+                        <li>
+                            <span>Asuransi</span>
+                            <span>Rp 5.000</span>
+                        </li>
+                        <li>
+                            <span>Parkir Motor</span>
+                            <span>Rp 5.000</span>
+                        </li>
+                        <li>
+                            <span>Parkir Mobil</span>
+                            <span>Rp 10.000</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Jam Operasional & Tips -->
+                <div class="info-card">
+                    <h3>Jam Operasional & Tips</h3>
+                    <p><strong>Buka Setiap Hari:</strong> 06.00 - 17.00 WIB</p>
+                    <br>
+                    <p><strong>Tips Perjalanan:</strong></p>
+                    <ul class="tips-list">
+                        <li>Gunakan alas kaki anti licin (trekking shoes).</li>
+                        <li>Bawa baju ganti dan air hujan.</li>
+                        <li>Waktu terbaik: Musim kemarau (Juni - September).</li>
+                        <li>Hati-hati saat menuruni tangga bambu.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Tumpak Sewu</h4>
+                    <p>Website informasi wisata resmi Air Terjun Tumpak Sewu untuk mempromosikan keindahan alam Jawa Timur ke dunia.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak Kami</h4>
+                    <p>Email: info@tumpaksewu.id</p>
+                    <p>Telepon: +62 812 3456 7890</p>
+                    <p>Alamat: Sidomulyo, Pronojiwo, Lumajang, Jawa Timur</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Pesona Indonesia. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
